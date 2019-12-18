@@ -47,13 +47,16 @@ class LRUCache:
     the newly-specified value.
     """
 
-    def set(self, key, value):
-        # self.cache[key] = value
+    def addnode(self, key, value):
+        cachenode = {key: {key: value}}
+        node = cachenode[key]
+        self.storage.add_to_head(node)
+        self.cache[key] = self.storage.head
 
+    def set(self, key, value):
         if key in self.cache:
             node = self.cache[key]
             node.value = {key: value}
-            # self.cache[key] = node
             self.storage.move_to_front(node)
             return
         elif self.count == self.limit:
@@ -61,15 +64,17 @@ class LRUCache:
             tailkey = list(tail.value.keys())[0]
             del self.cache[tailkey]
             self.storage.remove_from_tail()
-            cachenode = {key: {key: value}}
-            node = cachenode[key]
-            self.storage.add_to_head(node)
-            self.cache[key] = self.storage.head
+            # cachenode = {key: {key: value}}
+            # node = cachenode[key]
+            # self.storage.add_to_head(node)
+            # self.cache[key] = self.storage.head
+            self.addnode(key, value)
         else:
-            cachenode = {key: {key: value}}
-            node = cachenode[key]
-            self.storage.add_to_head(node)
-            self.cache[key] = self.storage.head
+            # cachenode = {key: {key: value}}
+            # node = cachenode[key]
+            # self.storage.add_to_head(node)
+            # self.cache[key] = self.storage.head
+            self.addnode(key, value)
             self.count += 1
 
     def __repr__(self):
