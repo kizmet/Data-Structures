@@ -156,11 +156,11 @@ class DoublyLinkedList:
         return f"head: value {self.head.value}, next {self.head.next.value} \ntail: value {self.tail.value} prev {self.tail.prev.value} "
 
 
-if __name__ == "__main__":
-    n = ListNode(1)
-    dll = DoublyLinkedList(n)
-    dll.add_to_head(5)
-    dll.add_to_head(3)
-    dll.add_to_tail(1)
-    dll.add_to_tail(7)
-    print(dll)
+# if __name__ == "__main__":
+#     n = ListNode(1)
+#     dll = DoublyLinkedList(n)
+#     dll.add_to_head(5)
+#     dll.add_to_head(3)
+#     dll.add_to_tail(1)
+#     dll.add_to_tail(7)
+#     print(dll)
